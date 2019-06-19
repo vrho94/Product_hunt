@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if error %}
+{{error}}
+{% endif %}
+<h1>Create!</h1>
+
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  <!-- varuje podatke pred napadi, to je pomembno pri form značkah -->
+  Title:<br>
+  <input type="text" name="title" />
+  <br>
+  Body:<br>
+  <input type="text" name="body" />
+  <br>
+  Url:<br>
+  <input type="url" name="url" />
+  <br>
+  Image:<br>
+  <input type="file" name="image" />
+  <br>
+  Icon:<br>
+  <input type="file" name="icon" />
+  <br>
+  <input class="btn btn-primary" type="submit" value="Create product" />
+
+</form>
+{% endblock %}
